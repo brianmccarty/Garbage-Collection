@@ -50,10 +50,10 @@ These are some examples using this sensor. The Lovelace config examples are incl
 4. Restart Home Assistant.
 
 ## Configuration
-__Based on the [Home Assistant design guideline](https://www.home-assistant.io/blog/2020/04/14/the-future-of-yaml/#the-future-of-yaml), the YAML configuratio option will be removed in the future.__
+__Based on the [Home Assistant design guideline](https://www.home-assistant.io/blog/2020/04/14/the-future-of-yaml/#the-future-of-yaml), the YAML configuration option will be removed in the future.__
 
 There are 2 ways to configure the integration:
-1. Using *Config Flow*: in `Configuration/Integrations` click on the `+` button, select `Garbage Collection` and configure the sensor (prefered). If you configure Garbage Collection using Config Flow, you can change the entity_name, name and change the sensor parameters from the Integrations configuration. The changes are instant and do not require HA restart.
+1. Using *Config Flow*: in `Configuration/Integrations` click on the `+` button, select `Garbage Collection` and configure the sensor (preferred). If you configure Garbage Collection using Config Flow, you can change the entity_name, name and change the sensor parameters from the Integrations configuration. The changes are instant and do not require HA restart.
 2. Using *YAML* (deprecated): add `garbage_collection` integration in your `configuration.yaml` and add individual sensors. 
 <details>
   <summary>YAML configuration example:</summary>
@@ -108,7 +108,7 @@ garbage_collection:
 ```
   
 </details>
-Entity_id change is not possible using the YAML configuration. Changing other paratemers require restarting Home Assistant.
+Entity_id change is not possible using the YAML configuration. Changing other parameters require restarting Home Assistant.
 
 ### CONFIGURATION PARAMETERS
 #### SENSOR PARAMETERS
@@ -116,12 +116,12 @@ Entity_id change is not possible using the YAML configuration. Changing other pa
 |:----------|----------|------------
 | `name` | Yes | Sensor friendly name
 | `frequency` | Yes | `"weekly"`, `"even-weeks"`, `"odd-weeks"`, `"every-n-weeks"`, `"every-n-days"`, `"monthly"`, `"annual"` or `"group"`
-| `offset` | No | Offset calculated date by `offset` days (makes most sense for monthly frequency). Examples of use:</br>for last Saurday each month, configure first Saturday each month with `offset: -7`</br>for 1<sup>st</sup> Wednesday in of full week, configure first Monday each month with `offset: 2`</br>(integer between -31 and 31) **Default**: 0
+| `offset` | No | Offset calculated date by `offset` days (makes most sense for monthly frequency). Examples of use:</br>for last Saturday each month, configure first Saturday each month with `offset: -7`</br>for 1<sup>st</sup> Wednesday in of full week, configure first Monday each month with `offset: 2`</br>(integer between -31 and 31) **Default**: 0
 | `hidden` | No | Hide in calendar (useful for sensors that are used in groups)<br/>**Default**: `False`
 | `icon_normal` | No | Default icon **Default**:  `mdi:trash-can`
 | `icon_today` | No | Icon if the collection is today **Default**: `mdi:delete-restore`
 | `icon_tomorrow` | No | Icon if the collection is tomorrow **Default**: `mdi:delete-circle`
-| `expire_after` | No | Time in format format `HH:MM`. If the collection is due today, start looking for the next occurence after this time (i.e. if the weekly collection is in the morning, change the state from 'today' to next week in the afternoon)
+| `expire_after` | No | Time in format format `HH:MM`. If the collection is due today, start looking for the next occurrence after this time (i.e. if the weekly collection is in the morning, change the state from 'today' to next week in the afternoon)
 | `verbose_state` | No | The sensor state will show collection date and remaining days, instead of number **Default**: `False`
 | `verbose_format` | No | (relevant when `verbose_state` is `True`). Verbose status formatting string. Can use placeholders `{date}` and `{days}` to show the date of next collection and remaining days. **Default**: `'on {date}, in {days} days'`</br>*When the collection is today or tomorrow, it will show `Today` or `Tomorrow`*</br>*(currently in English, French, Czech and Italian).*
 | `date_format` | No | In the `verbose_format`, you can configure the format of date (using [strftime](http://strftime.org/) format)  **Default**: `'%d-%b-%Y'`
@@ -153,7 +153,7 @@ Entity_id change is not possible using the YAML configuration. Changing other pa
 |Attribute |Required|Description
 |:----------|----------|------------
 |`period` | No | Collection every `"period"` weeks (integer 1-53)<br/>**Default**: 1
-|`first_week` | No | First collection on the `"first_week"` week (integer 1-53)<br/>**Default**: 1<br/>*(The week number is using [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601#Week_dates) numeric representatio of the week)<br/><br/>Note: This parameter cannot be used to set the beginning of the collection period (use the `first_month` parameter for that). The purpose of `first_week` is to simply 'offset' the week number, so that the collection every n weeks does not always trigger on week numbers that are multiply of n. Technically, the value of this parameter shall be less than `period`, otherwise it will give weird results. Also note that the week numbers restart each year. Use `every-n-days` frequency if you need consistent period across the year ends.*
+|`first_week` | No | First collection on the `"first_week"` week (integer 1-53)<br/>**Default**: 1<br/>*(The week number is using [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601#Week_dates) numeric representation of the week)<br/><br/>Note: This parameter cannot be used to set the beginning of the collection period (use the `first_month` parameter for that). The purpose of `first_week` is to simply 'offset' the week number, so that the collection every n weeks does not always trigger on week numbers that are multiply of n. Technically, the value of this parameter shall be less than `period`, otherwise it will give weird results. Also note that the week numbers restart each year. Use `every-n-days` frequency if you need consistent period across the year ends.*
 
 
 #### PARAMETERS FOR COLLECTION EVERY-N-DAYS
@@ -215,12 +215,12 @@ It will set the `last_collection` attribute to the current date and time.
 
 | Attribute | Description
 |:----------|------------
-| `entity_id` | The gatbage collection entity id (e.g. `sensor.general_waste`)
+| `entity_id` | The garbage collection entity id (e.g. `sensor.general_waste`)
 
 # Lovelace config examples
 
 ## Garbage Collection custom card
-You can use the custom  [garbage collection card](https://github.com/amaximus/garbage-collection-card) developped by @amaximus.
+You can use the custom  [garbage collection card](https://github.com/amaximus/garbage-collection-card) developed by @amaximus.
 
 <img src="https://github.com/amaximus/garbage-collection-card/blob/master/garbage_collection_lovelace.jpg">
 
@@ -251,11 +251,11 @@ This is the configuration
 ```
 
 ## List view (entities)
-The simplest visualisation is to use entities. In this case, I use `verbose_state` to show `state` as text.
+The simplest visualization is to use entities. In this case, I use `verbose_state` to show `state` as text.
 
 <img src="https://github.com/bruxy70/Garbage-Collection/blob/master/images/entities.png">
 
-Integration configuration (you can customise state text by `verbose_format` and `date_format` parameters)
+Integration configuration (you can customize state text by `verbose_format` and `date_format` parameters)
 ```yaml
 garbage_collection:
   sensors:
